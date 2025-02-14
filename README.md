@@ -6,7 +6,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ### `npm install`
 
-### `npm install @mui/material @mui/icons-material @emotion/styled @emotion/react react-router-dom
+### `npm install @mui/material @mui/icons-material @emotion/styled @emotion/react react-router-dom`
 
 ## Available Scripts
 
