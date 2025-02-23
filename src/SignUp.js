@@ -104,18 +104,38 @@ export default function SignUp(props) {
         return isValid;
     };
 
-    const handleSubmit = (event) => {
-        if (nameError || emailError || passwordError) {
-            event.preventDefault();
-            return;
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+
+        if (!validateInputs()) return;
+
+        const formData = new FormData(event.currentTarget);
+        const payload = {
+            name: formData.get('name'),
+            email: formData.get('email'),
+            password: formData.get('password')
+        };
+
+        try {
+            const response = await fetch('http://34.174.232.200:5000/api/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            });
+
+            const result = await response.json();
+            if (response.ok) {
+                alert('Sign up successful! Please proceed to Sign In page.');
+                // possible auto redirect
+            } else {
+                alert(result.error || 'Sign up failed.');
+            }
+        } catch (error) {
+            console.error('Error during sign up: ', error);
+            alert('Error connecting to the server.');
         }
-        const data = new FormData(event.currentTarget);
-        console.log({
-            name: data.get('name'),
-            lastName: data.get('lastName'),
-            email: data.get('email'),
-            password: data.get('password'),
-        });
     };
 
     return (
@@ -190,7 +210,6 @@ export default function SignUp(props) {
                             type="submit"
                             fullWidth
                             variant="contained"
-                            onClick={validateInputs}
                         >
                             Sign Up
                         </Button>
