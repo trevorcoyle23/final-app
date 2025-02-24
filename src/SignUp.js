@@ -125,7 +125,9 @@ export default function SignUp(props) {
                 body: JSON.stringify(payload)
             });
 
-            const result = await response.json();
+            const rawText = await response.text();
+            const result = JSON.parse(rawText);
+            
             if (response.ok) {
                 alert('Sign up successful! Please proceed to Sign In page.');
                 // possible auto redirect

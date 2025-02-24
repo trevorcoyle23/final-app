@@ -93,7 +93,9 @@ export default function SignIn(props) {
                 body: JSON.stringify(payload)
             });
             
-            const result = await response.json();
+            const rawText = await response.text();
+            const result = JSON.parse(rawText);
+            
             if (response.ok) {
                 alert('Sign in successful!');
             } else {
