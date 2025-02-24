@@ -85,7 +85,7 @@ app.post('/api/signin', (req, res) => {
 });
 
 // Start the server
-const PORT = process.env.PORT;
+const PORT = process.env.SERVER_PORT;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
