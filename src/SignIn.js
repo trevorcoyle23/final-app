@@ -87,7 +87,7 @@ export default function SignIn(props) {
         };
 
         try {
-            const response = await fetch('34.174.232.200:5000', {
+            const response = await fetch('http://34.174.232.200:5000/api/signin', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)
