@@ -58,7 +58,7 @@ app.post('/api/signup', async (req, res) => {
 app.post('/api/signin', (req, res) => {
     const { email, password } = req.body;
 
-    if (!email || password) {
+    if (!email || !password) {
         return res.status(400).json({ error: 'Missing email or password.' });
     }
 
@@ -70,7 +70,7 @@ app.post('/api/signin', (req, res) => {
         }
 
         if (results.length === 0) {
-            return res.status(500).json({ error: 'Database error.' });
+            return res.status(500).json({ error: 'User does not exist.' });
         }
 
         const user = results[0];

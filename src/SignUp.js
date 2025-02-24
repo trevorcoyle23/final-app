@@ -117,7 +117,7 @@ export default function SignUp(props) {
         };
 
         try {
-            const response = await fetch('http://34.174.232.200:5000/api/signup', {
+            const response = await fetch('34.174.232.200:5000/api/signup', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

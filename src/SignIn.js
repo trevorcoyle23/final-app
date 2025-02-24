@@ -75,16 +75,34 @@ export default function SignIn(props) {
         setOpen(false);
     };
 
-    const handleSubmit = (event) => {
-        if (emailError || passwordError) {
-            event.preventDefault();
-            return;
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+
+        if (!validateInputs()) return;
+
+        const formData = new FormData(event.currentTarget);
+        const payload = {
+            email: formData.get('email'),
+            password: formData.get('password'),
+        };
+
+        try {
+            const response = await fetch('34.174.232.200:5000', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+            
+            const result = await response.json();
+            if (response.ok) {
+                alert('Sign in successful!');
+            } else {
+                alert(result.error || 'Sign in failed.');
+            }
+        } catch (error) {
+            console.error('Error during sign in: ', error);
+            alert('Error connecting to the server.');
         }
-        const data = new FormData(event.currentTarget);
-        console.log({
-            email: data.get('email'),
-            password: data.get('password'),
-        });
     };
 
     const validateInputs = () => {
