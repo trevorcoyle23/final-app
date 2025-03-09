@@ -6,7 +6,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ### `npm install`
 
-### `npm i @mui/material @mui/icons-material @emotion/styled @emotion/react react-router-dom mysql2 bcrypt cors body-parser express axios`
+### `npm i @mui/material @mui/icons-material @emotion/styled @emotion/react react-router-dom mysql2 bcrypt cors body-parser express axios dotenv`
 
 ## Available Scripts
 
