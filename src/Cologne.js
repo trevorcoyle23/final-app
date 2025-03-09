@@ -6,7 +6,7 @@ const Cologne = () => {
     return (
         <div>
             <Navbar />
-            <ProductGrid categoryEndpoint="http://34.42.46.130:5000/api/colognes" categoryType="Cologne" />
+            <ProductGrid categoryEndpoint="http://34.30.241.199:5000/api/colognes" categoryType="Cologne" />
         </div>
         
     );
