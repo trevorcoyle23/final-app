@@ -85,6 +85,63 @@ app.post('/api/signin', (req, res) => {
     });
 });
 
+// Cologne API endpoint
+app.get('/api/colognes', (req, res) => {
+    const query = `
+        SELECT
+            c.reference_id, c.product_id, c.model_name, c.size, c.price, c.fragrance_notes, c.quantity,
+            p.brand, p.image_url
+        FROM colognes c
+        JOIN products p ON c.product_id = p.product_id
+        WHERE p.product_category = 'Cologne'
+    `;
+    db.query(query, (error, results) => {
+        if (error) {
+            console.error('Error fetching colognes:', error);
+            return res.status(500).json({ error: 'Database error.' });
+        }
+        res.status(200).json(results);
+    });
+});
+
+// Glasses API endpoint
+app.get('/api/glasses', (req, res) => {
+    const query = `
+        SELECT
+            g.reference_id, g.product_id, g.model_name, g.size, g.price, g.quantity,
+            p.brand, p.image_url
+        FROM glasses g
+        JOIN products p ON g.product_id = p.product_id
+        WHERE p.product_category = 'Glasses'
+    `;
+    db.query(query, (error, results) => {
+        if (error) {
+            console.error('Error fetching glasses:', error);
+            return res.status(500).json({ error: 'Database error.' });
+        }
+        res.status(200).json(results);
+    });
+});
+
+// Watches API endpoint
+app.get('/api/watches', (req, res) => {
+    const query = `
+        SELECT
+            w.reference_id, w.product_id, w.model_name, w.size, w.price, w.quantity,
+            p.brand, p.image_url
+        FROM watches w
+        JOIN products p ON w.product_id = p.product_id
+        WHERE p.product_category = 'Watches'
+    `;
+    db.query(query, (error, results) => {
+        if (error) {
+            console.error('Error fetching watches:', error);
+            return res.status(500).json({ error: 'Database error.' });
+        }
+        res.status(200).json(results);
+    });
+});
+
 // Start the server
 const PORT = process.env.SERVER_PORT;
 app.listen(PORT, () => {
