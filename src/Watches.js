@@ -6,7 +6,7 @@ const Watches = () => {
     return (
         <div>
             <Navbar />
-            <ProductGrid categoryEndpoint="http://34.174.232.200:5000/api/watches" categoryType="Watches" />
+            <ProductGrid categoryEndpoint="http://34.42.46.130:5000/api/watches" categoryType="Watches" />
         </div>
         
     );
