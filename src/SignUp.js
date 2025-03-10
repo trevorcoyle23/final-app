@@ -117,7 +117,7 @@ export default function SignUp(props) {
         };
 
         try {
-            const response = await fetch('http://34.30.241.199:5000/api/signup', {
+            const response = await fetch('https://www.nuevestore.org/api/signup', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

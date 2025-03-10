@@ -6,7 +6,7 @@ const Glasses = () => {
     return (
         <div>
             <Navbar />
-            <ProductGrid categoryEndpoint="http://34.30.241.199:5000/api/glasses" categoryType="Glasses" />
+            <ProductGrid categoryEndpoint="https://www.nuevestore.org/api/glasses" categoryType="Glasses" />
         </div>
         
     );
