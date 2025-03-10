@@ -40,7 +40,7 @@ app.post('/api/signup', async (req, res) => {
 
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        const query = 'INSERT INTO users (name, email, pass) VALUES (?, ?, ?)';
+        const query = 'INSERT INTO users (name, email, password) VALUES (?, ?, ?)';
         db.query(query, [name, email, hashedPassword], (error, results) => {
             if (error) {
                 console.error('Database error during sign-up: ', error);
@@ -74,7 +74,7 @@ app.post('/api/signin', (req, res) => {
         }
 
         const user = results[0];
-        const match = await bcrypt.compare(password, user.pass);
+        const match = await bcrypt.compare(password, user.password);
 
         if (match) {
             return res.status(200).json({ message: 'User signed in successfully.' });
